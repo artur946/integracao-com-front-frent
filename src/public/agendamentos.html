@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="agendamentos.css">
+	<title>Agendamentos</title>
+</head>
+
+<body>
+
+	<header>
+		<h1>Agendamentos</h1>
+		<p>Lista de agendamentos cadastrados no sistema.</p>
+	</header>
+
+	<nav>
+		<a href="/index.html">Inicio</a>
+		<a href="/servicos.html">Servicos</a>
+	</nav>
+
+	<main>
+		<section>
+			<h2>Novo agendamento</h2>
+
+			<form id="form-agendamento">
+				<label for="usuario_id">Usuario</label>
+				<br>
+				<select id="usuario_id" name="usuario_id">
+					<option value="">Carregando usuarios...</option>
+				</select>
+
+				<br><br>
+
+				<label for="servico_id">Servico</label>
+				<br>
+				<select id="servico_id" name="servico_id">
+					<option value="">Carregando servicos...</option>
+				</select>
+
+				<br><br>
+
+				<label for="profissional_id">ID do profissional</label>
+				<br>
+				<input type="number" id="profissional_id" name="profissional_id">
+
+				<br><br>
+
+				<label for="data_agendamento">Data e hora</label>
+				<br>
+				<input type="datetime-local" id="data_agendamento" name="data_agendamento">
+
+				<br><br>
+
+				<button type="submit">Agendar</button>
+			</form>
+
+			<p id="mensagem"></p>
+		</section>
+
+		<section>
+			<h2>Agendamentos cadastrados</h2>
+
+			<ul id="lista-agendamentos">
+				<li>Carregando agendamentos...</li>
+			</ul>
+		</section>
+	</main>
+
+	<script src="/js/agendamentos.js"></script>
+</body>
+
+</html>

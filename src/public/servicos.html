@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="servicos.css">
+	<title>Serviços</title>
+</head>
+
+<body>
+
+	<header>
+		<h1>Serviços</h1>
+		<p>Lista de serviços cadastrados no sistema.</p>
+	</header>
+
+	<nav>
+		<a href="/index.html">Início</a>
+		<a href="/agendamentos.html">Agendamentos</a>
+	</nav>
+
+	<main>
+		<section>
+			<h2>Cadastrar novo serviço</h2>
+
+			<form id="form-servico">
+				<label for="nome">Nome do serviço</label>
+				<br>
+				<input type="text" id="nome" name="nome">
+
+				<br><br>
+
+				<label for="preco">Preço</label>
+				<br>
+				<input type="number" id="preco" name="preco" step="0.01">
+
+				<br><br>
+
+				<button type="submit">Cadastrar serviço</button>
+			</form>
+
+			<p id="mensagem"></p>
+		</section>
+
+		<section>
+			<h2>Serviços disponíveis</h2>
+
+			<ul id="lista-servicos">
+				<li>Carregando serviços...</li>
+			</ul>
+		</section>
+	</main>
+
+	<script src="/js/servicos.js"></script>
+</body>
+
+</html>

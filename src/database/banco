@@ -1,0 +1,90 @@
+drop database if exists sistema_agendamento;
+create database sistema_agendamento;
+use sistema_agendamento;
+
+select database();
+
+create table usuarios (
+    id int primary key auto_increment,
+    nome varchar(100),
+    email varchar(100),
+    senha varchar(255)
+);
+
+create table servicos (
+    id int primary key auto_increment,
+    nome varchar(100) not null,
+    preco decimal(10,2) not null,
+    ativo boolean default true
+);
+
+create table profissionais (
+    id int primary key auto_increment,
+    nome varchar(100) not null
+);
+
+create table profissionais_servicos (
+    profissional_id int not null,
+    servico_id int not null,
+    primary key (profissional_id, servico_id), 
+    foreign key (profissional_id) references profissionais(id),
+    foreign key (servico_id) references servicos(id)
+);
+
+create table agendamentos (
+    id int primary key auto_increment,
+    data_agendamento datetime,
+    usuario_id int not null,
+    servico_id int not null, 
+    profissional_id int not null,
+    
+    foreign key (usuario_id) references usuarios(id),
+    foreign key (servico_id) references servicos(id),
+    foreign key (profissional_id) references profissionais(id)
+);
+
+insert into usuarios (nome, email, senha) values 
+    ("Grimaldi", "grimaldi@gmail.com", "123456"), 
+    ("Silveira", "silveira@gmail.com", "78910"), 
+    ("João", "joao@gmail.com", "abcd"), 
+    ("Pedro", "pedro@gmail.com", "wxyz");
+
+insert into servicos (nome, preco, ativo) values 
+    ("Corte de Cabelo", 45.00, true), 
+    ("Edição de Vídeo", 25.50, false), 
+    ("Desenvolvimento de Site", 120.00, true), 
+    ("Composição Musical", 500.00, true);
+
+insert into profissionais (nome) values
+    ("Carlos Calvão"),
+    ("Aninha After Affects"),
+    ("Jagoncio Garoto de Programa"),
+    ("Beethoven");
+
+insert into profissionais_servicos (profissional_id, servico_id) values
+    (1, 1), 
+    (2, 2),
+    (2, 3),
+    (3, 3), 
+    (4, 4); 
+    
+insert into agendamentos (data_agendamento, usuario_id, servico_id, profissional_id) values 
+    ('2026-06-26 18:50:00', 1, 4, 4), 
+    ('2027-07-27 19:55:00', 2, 3, 3), 
+    ('2028-08-28 20:50:00', 3, 2, 2), 
+    ('2029-09-29 21:50:00', 4, 1, 1);
+    
+select id, nome, email from usuarios;
+select id, nome, preco, ativo from servicos;
+select id, data_agendamento, usuario_id, servico_id from agendamentos;
+
+select agendamentos.id, 
+agendamentos.data_agendamento, usuarios.nome AS usuario, servicos.nome AS servico, servicos.preco, servicos.ativo
+from
+agendamentos
+inner join
+usuarios
+on agendamentos.usuario_id = usuarios.id
+inner join
+servicos
+on agendamentos.servico_id = servicos.id;
