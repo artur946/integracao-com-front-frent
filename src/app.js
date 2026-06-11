@@ -18,3 +18,4 @@ app.use('/api/agendamentos', agendamentosRoutes);
 app.use('/api/auth', authRoutes);
 
 module.exports = app;
+//teste
